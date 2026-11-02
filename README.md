@@ -145,15 +145,15 @@ In addition to this, you can select the following triggers:
 
 	You can take picture simultaneously using multiple ESP32s.   
 	```
-	+----------+                                +----------+          +----------+
-	|          | Publish  +----------+ HTTP Put |          |          |          |
-	|          |--------->| ESP32 #1 |--------->|          |          |          |
-	|          |          +----------+          |          |          |          |
-	| MQTT     |                                | ntfy.sh  |--------->|smartphone|
-	| Client   | Publish  +----------+ HPPT Put |          |          |          |
-	|          |--------->| ESP32 #2 |--------->|          |          |          |
-	|          |          +----------+          |          |          |          |
-	+----------+                                +----------+          +----------+
+	+----------+          +----------+                                 +----------+          +----------+
+	|          |          |          | Subscrive +----------+ HTTP Put |          |          |          |
+	|          |          |          |---------->| ESP32 #1 |--------->|          |          |          |
+	| MQTT     | Publish  | MQTT     |           +----------+          |          |          |          |
+	| Client   |--------->| Broker   |                                 | ntfy.sh  |--------->|smartphone|
+	|          |          |          | Subscrive +----------+ HPPT Put |          |          |          |
+	|          |          |          |---------->| ESP32 #2 |--------->|          |          |          |
+	|          |          |          |           +----------+          |          |          |          |
+	+----------+          +----------+                                 +----------+          +----------+
 	```
 
 ### Flash Light   
