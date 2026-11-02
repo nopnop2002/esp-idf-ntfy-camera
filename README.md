@@ -1,5 +1,5 @@
 # esp-idf-ntfy-camera
-Take a photo and publish it via ntfy.sh.   
+Take a picture and publish it via ntfy.sh.   
 ntfy (pronounced notify) is a simple HTTP-based pub-sub notification service.   
 It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API.   
 The ESP32 acts as a REST client.   
