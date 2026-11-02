@@ -27,7 +27,7 @@ From the left:
 
 # Start ntfy.sh
 Install ntfy.sh on your smartphone and register the topics you wish to subscribe to.   
-Please specify a topic that is not already being used by others.   
+Topics are not password-protected, so please choose a name that is difficult to guess.   
 <img width="864" height="576" alt="Image" src="https://github.com/user-attachments/assets/f7245770-1067-4ac3-a724-6a323040afd8" />
 <img width="864" height="576" alt="Image" src="https://github.com/user-attachments/assets/e2fdf4e2-9dfb-4ca7-922d-07d937d6a2f1" />
 
