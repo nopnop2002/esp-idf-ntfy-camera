@@ -139,7 +139,7 @@ In addition to this, you can select the following triggers:
 	You can use mosquitto_pub as shutter.   
 	`mosquitto_pub -h your_broker -p 1883 -t "/take/picture" -m ""`   
 	You can use publish.py as shutter.   
-	`python3 ./publish.py --host your_broker`
+	`python3 ./publish.py --host your_broker`   
 	Many MQTT clients that can be used on smartphones are available.   
 	<img width="659" height="486" alt="Image" src="https://github.com/user-attachments/assets/c1740dd6-51eb-45e5-93ca-712e1f2290b4" />
 
