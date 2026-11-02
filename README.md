@@ -1,9 +1,9 @@
 # esp-idf-ntfy-camera
-Take a photo and publish it via ntfy.sh.
+Take a photo and publish it via ntfy.sh.   
 ntfy (pronounced notify) is a simple HTTP-based pub-sub notification service.   
 It allows you to send notifications to your phone or desktop via scripts from any computer, and/or using a REST API.   
-The ESP32 operates as a REST client.   
-You can download this app [here](https://ntfy.sh/).   
+The ESP32 acts as a REST client.   
+You can download this app from [here](https://ntfy.sh/).   
 
 This project use [this](https://components.espressif.com/components/espressif/esp32-camera) Camera Driver.   
 <img width="1280" height="720" alt="Image" src="https://github.com/user-attachments/assets/d06fd414-6fe8-45b6-9854-5efc2fb7c25c" />
@@ -27,6 +27,7 @@ From the left:
 
 # Start ntfy.sh
 Install ntfy.sh on your smartphone and register the topics you wish to subscribe to.   
+Please specify a topic that is not already being used by others.   
 <img width="864" height="576" alt="Image" src="https://github.com/user-attachments/assets/f7245770-1067-4ac3-a724-6a323040afd8" />
 <img width="864" height="576" alt="Image" src="https://github.com/user-attachments/assets/e2fdf4e2-9dfb-4ca7-922d-07d937d6a2f1" />
 
@@ -79,7 +80,7 @@ You can use this command as shutter.
 `curl -X POST http://{ESP32's IP Address}:8080/post`   
 If your ESP32's IP address is `192.168.10.157`, it will look like this.   
 `curl -X POST http://192.168.10.157:8080/post`   
-You can use an mDNS host name instead of an IP address.
+You can use an mDNS host name instead of an IP address.   
 `curl -X POST http://esp32-camera.local:8080/post`
 
 In addition to this, you can select the following triggers:   
