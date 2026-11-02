@@ -140,7 +140,8 @@ In addition to this, you can select the following triggers:
 	`mosquitto_pub -h your_broker -p 1883 -t "/take/picture" -m ""`   
 	You can use publish.py as shutter.   
 	`python3 ./publish.py --host your_broker`
-	<img width="659" height="486" alt="Image" src="https://github.com/user-attachments/assets/7c455630-c14c-4c26-bf7c-a3bd8c51f652" />
+	Many MQTT clients that can be used on smartphones are available.   
+	<img width="659" height="486" alt="Image" src="https://github.com/user-attachments/assets/c1740dd6-51eb-45e5-93ca-712e1f2290b4" />
 
 ### Flash Light   
 ESP32-CAM by AI-Thinker have flash light on GPIO4.   
