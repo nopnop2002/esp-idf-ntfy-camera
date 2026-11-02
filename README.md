@@ -143,6 +143,19 @@ In addition to this, you can select the following triggers:
 	Many MQTT clients that can be used on smartphones are available.   
 	<img width="659" height="486" alt="Image" src="https://github.com/user-attachments/assets/c1740dd6-51eb-45e5-93ca-712e1f2290b4" />
 
+	You can take picture simultaneously using multiple ESP32s.   
+	```
+	+----------+                                +----------+          +----------+
+	|          | Publish  +----------+ HTTP Put |          |          |          |
+	|          |--------->| ESP32 #1 |--------->|          |          |          |
+	|          |          +----------+          |          |          |          |
+	| MQTT     |                                | ntfy.sh  |--------->|smartphone|
+	| Client   | Publish  +----------+ HPPT Put |          |          |          |
+	|          |--------->| ESP32 #2 |--------->|          |          |          |
+	|          |          +----------+          |          |          |          |
+	+----------+                                +----------+          +----------+
+	```
+
 ### Flash Light   
 ESP32-CAM by AI-Thinker have flash light on GPIO4.   
 <img width="659" height="486" alt="Image" src="https://github.com/user-attachments/assets/a495a9fb-a785-4ed3-99e0-fdc354469d85" />
