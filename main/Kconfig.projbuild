@@ -57,11 +57,11 @@ menu "Application Configuration"
 
 	menu "NTFY Server Setting"
 
-		config NTFY_TOPIC
-			string "NTFY_TOPIC"
-			default "my_ntft_topic"
+		config NTFY_PUB_TOPIC
+			string "NTFY topic to be published"
+			default "ntfy_publish_topic"
 			help
-				NTFY Topic to connect.
+				NTFY topic to be published.
 
 	endmenu
 
@@ -105,7 +105,6 @@ menu "Application Configuration"
 				bool "Use UDP Socket"
 			config SHUTTER_MQTT
 				bool "Use MQTT Subscribe"
-
 		endchoice
 
 		config GPIO_INPUT
@@ -160,12 +159,12 @@ menu "Application Configuration"
 			help
 				Host name or IP address of the broker to connect to
 
-		config SUB_TOPIC
+		config MQTT_SUB_TOPIC
 			depends on SHUTTER_MQTT
-			string "Subscribe Topic"
+			string "MQTT subscribe Topic"
 			default "/take/picture"
 			help
-				Topic of subscribe
+				MQTT subscribe Topic.
 
 	endmenu
 

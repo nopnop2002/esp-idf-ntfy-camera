@@ -204,7 +204,7 @@ esp_err_t start_server(int port)
 	return ESP_OK;
 }
 
-void http_task(void *pvParameters)
+void http_server(void *pvParameters)
 {
 	char *task_parameter = (char *)pvParameters;
 	ESP_LOGI(TAG, "Start task_parameter=%s", task_parameter);

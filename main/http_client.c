@@ -22,7 +22,7 @@ extern QueueHandle_t xQueueRequest;
 
 #define MAX_HTTP_OUTPUT_BUFFER 2048
 
-static const char *TAG = "CLIENT";
+static const char *TAG = "HTTP-CLIENT";
 
 /*
  *	http_native_request() demonstrates use of low level APIs to connect to a server,
@@ -116,7 +116,7 @@ static esp_err_t http_native_request(char * ImageFileName, char * NtfyTopic)
 
 void http_client(void *pvParameters)
 {
-	ESP_LOGI(TAG, "Start NTFY_TOPIC:%s", CONFIG_NTFY_TOPIC);
+	ESP_LOGI(TAG, "Start NTFY_PUB_TOPIC:%s", CONFIG_NTFY_PUB_TOPIC);
 	REQUEST_t requestBuf;
 	while(1) {
 		ESP_LOGD(TAG,"Waitting....");
@@ -125,8 +125,8 @@ void http_client(void *pvParameters)
 		if (requestBuf.command == CMD_HALT) break;
 		ESP_LOGI(TAG,"requestBuf.localFileName=[%s]", requestBuf.localFileName);
 
-		//esp_err_t ret = http_native_request("/images/esp32.jpeg", CONFIG_NTFY_TOPIC);
-		esp_err_t ret = http_native_request(requestBuf.localFileName, CONFIG_NTFY_TOPIC);
+		//esp_err_t ret = http_native_request("/images/esp32.jpeg", CONFIG_NTFY_PUB_TOPIC);
+		esp_err_t ret = http_native_request(requestBuf.localFileName, CONFIG_NTFY_PUB_TOPIC);
 		ESP_LOGI(TAG, "http_native_request=%d", ret);
 		uint32_t ulValue = 0x00;
 		if (ret != ESP_OK) {

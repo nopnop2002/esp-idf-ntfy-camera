@@ -23,7 +23,7 @@
 #include "cmd.h"
 #include "mqtt.h"
 
-static const char *TAG = "SUB";
+static const char *TAG = "MQTT-SUB";
 
 extern QueueHandle_t xQueueCmd;
 
@@ -37,7 +37,7 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
 		case MQTT_EVENT_CONNECTED:
 			ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
 			xTaskNotifyGive( mqttBuf->taskHandle );
-			//esp_mqtt_client_subscribe(mqtt_client, CONFIG_SUB_TOPIC, 0);
+			//esp_mqtt_client_subscribe(mqtt_client, CONFIG_MQTT_SUB_TOPIC, 0);
 			break;
 		case MQTT_EVENT_DISCONNECTED:
 			ESP_LOGW(TAG, "MQTT_EVENT_DISCONNECTED");
@@ -169,7 +169,7 @@ void mqtt_sub(void *pvParameters)
 		ESP_LOGI(TAG, "event_id=%"PRIi32, mqttBuf.event_id);
 
 		if (mqttBuf.event_id == MQTT_EVENT_CONNECTED) {
-			esp_mqtt_client_subscribe(mqtt_client, CONFIG_SUB_TOPIC, 0);
+			esp_mqtt_client_subscribe(mqtt_client, CONFIG_MQTT_SUB_TOPIC, 0);
 		} else if (mqttBuf.event_id == MQTT_EVENT_DISCONNECTED) {
 			esp_mqtt_client_reconnect(mqtt_client);
 		} else if (mqttBuf.event_id == MQTT_EVENT_DATA) {

@@ -305,6 +305,7 @@ esp_err_t mountSPIFFS(char * partition_label, char * base_path) {
 	return ret;
 }
 
+void http_server(void *pvParameters);
 void http_client(void *pvParameters);
 
 #if CONFIG_SHUTTER_ENTER
@@ -327,7 +328,6 @@ void udp_server(void *pvParameters);
 void mqtt_sub(void *pvParameters);
 #endif
 
-void http_task(void *pvParameters);
 
 void app_main(void)
 {
@@ -368,8 +368,8 @@ void app_main(void)
 	xQueueHttp = xQueueCreate( 10, sizeof(HTTP_t) );
 	configASSERT( xQueueHttp );
 
-	/* Create HTTP Client Task */
-	xTaskCreate(&http_client, "CLIENT", 1024*6, NULL, 5, NULL);
+	/* Create HTTP client Task */
+	xTaskCreate(&http_client, "HTTP-CLIENT", 1024*6, NULL, 5, NULL);
 
 	/* Create Shutter Task */
 #if CONFIG_SHUTTER_ENTER
@@ -394,19 +394,19 @@ void app_main(void)
 
 #if CONFIG_SHUTTER_MQTT
 #define SHUTTER "MQTT Subscrive"
-	xTaskCreate(mqtt_sub, "SUB", 1024*4, NULL, 2, NULL);
+	xTaskCreate(mqtt_sub, "MQTT-SUB", 1024*4, NULL, 2, NULL);
 #endif
 
 	/* Get the local IP address */
 	esp_netif_ip_info_t ip_info;
 	ESP_ERROR_CHECK(esp_netif_get_ip_info(esp_netif_get_handle_from_ifkey("WIFI_STA_DEF"), &ip_info));
 
-	/* Create HTTP Task */
+	/* Create HTTP Server Task */
 	char cparam0[64];
 	//sprintf(cparam0, "%s", ip4addr_ntoa(&ip_info.ip));
 	sprintf(cparam0, IPSTR, IP2STR(&ip_info.ip));
 	ESP_LOGI(TAG, "cparam0=[%s]", cparam0);
-	xTaskCreate(http_task, "HTTP", 1024*6, (void *)cparam0, 2, NULL);
+	xTaskCreate(http_server, "HTTP-SERVER", 1024*6, (void *)cparam0, 2, NULL);
 
 	ret = init_camera(FRAMESIZE_VGA);
 	if (ret != ESP_OK) {
